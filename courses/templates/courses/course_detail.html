@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% load humanize course_extras %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+    <article>
+        <h2><strong>{{ course.title }}</strong></h2>
+
+        <div class="card-header mt-4">
+            {{ course.description|markdown_to_html }}
+        </div>
+
+        <h3 class="bg-dark text-white p-3 mt-5">There are {{ course.step_set.count|apnumber }} step{{ course.step_set.count|pluralize }} in this course: {{ course.step_set.all|join:", " }}</h3>
+
+        <section>
+
+            {% for step in steps %}
+            <div class="card-header">
+                <h3><a class="text-success" href="{{ step.get_absolute_url }}">{{ step.title }}</a></h3>
+            </div>
+                <p class="card-body">{{ step.description }}</p>
+                <hr>
+            {% endfor %}
+
+        </section>
+
+    </article>
+
+  {% if user.is_authenticated %}
+    <hr>
+    <a href="{% url 'create_quiz' course_pk=course.id %}" class="btn btn-primary">New Quiz</a>
+  {% endif %}
+
+{% endblock %}

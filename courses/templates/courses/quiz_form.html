@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% load bootstrap4 %}
+
+{% block title %}{{ form.instance.title|default:"New Quiz"}} | {{ course.title }}{{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}
+  <li><a href="{% url 'courses:detail' pk=course.pk %}">{{ course.title }}</a></li>
+{% endblock %}
+
+{% block content %}
+  <div class="columns">
+    {{ block.super }}
+    <h1>{{ form.instance.title|default:"Make a new quiz"}}</h1>
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input type="submit" class="btn btn=dark" name="" value="Save">
+    </form>
+  </div>
+{% endblock %}
