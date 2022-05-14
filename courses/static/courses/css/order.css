@@ -8,17 +8,17 @@ html, body {
 	margin: 0;
 	padding: 0;
 	position: relative;
-	color: #464637;
+	color: #FF3F00;
 	min-height: 100%;
-	font-size: 20px;
+	font-size: 40px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 }
 
 
 h1 {
-	color: #FF3F00;
-	font-size: 20px;
+	color: #464637;
+	font-size: 40px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 	text-align: center;
